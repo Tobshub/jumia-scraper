@@ -1,6 +1,5 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
-const pretty = require("pretty");
 const prompt = require("prompt-sync")();
 
 const url = new URL("https://jumia.com.ng/catalog");
