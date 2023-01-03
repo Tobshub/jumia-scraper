@@ -1,6 +1,5 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
-const prompt = require("prompt-sync")();
 
 const url = new URL("https://jumia.com.ng/catalog");
 const baseUrl = url.origin; /* jumia origin */
