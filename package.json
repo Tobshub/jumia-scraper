@@ -1,0 +1,22 @@
+{
+  "name": "jumia-scraper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "web-scraper",
+    "jumia",
+    "shopping"
+  ],
+  "author": "Tobani Esan-George",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.2.2",
+    "cheerio": "^1.0.0-rc.12",
+    "pretty": "^2.0.0",
+    "prompt-sync": "^4.2.0"
+  }
+}
