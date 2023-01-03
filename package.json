@@ -19,7 +19,7 @@
     "cheerio": "^1.0.0-rc.12"
   },
   "devDependencies": {
-    "pretty": "^2.0.0"
+    "pretty": "^2.0.0",
+    "prompt-sync": "^4.2.0"
   }
 }
-
