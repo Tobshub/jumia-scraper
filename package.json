@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "node test.js"
   },
   "keywords": [
     "web-scraper",
@@ -20,3 +21,4 @@
     "prompt-sync": "^4.2.0"
   }
 }
+
