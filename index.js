@@ -9,9 +9,14 @@ async function scrapeData(query) {
   url.searchParams.append("q", query);
   const scraped_data = [];
 
-  // load the html from the url and parse with cheerio
-  const { data } = await axios.get(url.toString());
-  const $ = cheerio.load(data);
+  // load the html from the url
+  const { data, status, error } = await axios.get(url.toString());
+
+  if (status >= 400) {
+    throw error; /* handle errors from initial page fetch */
+  }
+
+  const $ = cheerio.load(data); /* parse the loaded html with cheerio */
 
   // set scrape url to page pathname if incase of redirect
   const path_name = $("head").children("meta")["5"].attribs.content;
@@ -30,7 +35,7 @@ async function scrapeData(query) {
     let data;
     let _$;
     if (url) {
-      // reload and parse new data
+      // get and parse data from the new url
       data = await axios.get(url.toString());
       _$ = cheerio.load(data.data);
     } else {
@@ -55,8 +60,11 @@ async function scrapeData(query) {
     });
   };
 
+  // scrape the first page
   await scrape();
-  // next function returned each time for pagination
+
+  // next function's return includes another next function
+  // until the last page
   const next = async (i = 2) => {
     scraped_data.splice(0, scraped_data.length);
     url.searchParams.get("page")
@@ -68,8 +76,10 @@ async function scrapeData(query) {
       next: i < last_page ? () => next(i + 1) : undefined,
     };
   };
+
   return {
     data: scraped_data,
+    // include next function for pagination
     next: () => next(),
   };
 }
