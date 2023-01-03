@@ -5,8 +5,8 @@ A web scraper for the popular e-commerce site jumia.com.ng.
 ```
 const jumiaScraper = require("jumia-scraper");
 
-const data = jumiaScraper("xyz");
-console.log(data) // {link, name, price, thumbnail}[]
+const res = jumiaScraper("xyz");
+console.log(res.data) // {link, name, price, thumbnail}[]
 ```
 
 ## Installation
